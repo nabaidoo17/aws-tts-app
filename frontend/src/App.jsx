@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [text, setText] = useState("");
-  const [voiceId, setVoiceId] = useState("en-US-female");
+  const [voiceId, setVoiceId] = useState("Joanna");
   const [voices, setVoices] = useState([]);
   const [audioUrl, setAudioUrl] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -37,17 +37,9 @@ function App() {
         body: JSON.stringify({ text, voiceId }),
       });
 
-      console.log('Response status:', res.status);
-      console.log('Response headers:', res.headers);
-
-      if (!res.ok) {
-        const errorText = await res.text();
-        console.error('Error response:', errorText);
-        throw new Error(`Conversion failed: ${res.status}`);
-      }
+      if (!res.ok) throw new Error("Conversion failed");
 
       const data = await res.json();
-      console.log('Response data:', data);
       
       // Set audio URL for playback
       if (data.audioUrl) {
@@ -55,7 +47,7 @@ function App() {
       }
     } catch (err) {
       console.error("Error:", err);
-      alert(`Failed to convert text: ${err.message}`);
+      alert("Failed to convert text. Please try again.");
     } finally {
       setLoading(false);
     }
