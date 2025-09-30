@@ -12,6 +12,11 @@ aws-tts-app/
 └── README.md         # This file
 ```
 
+## Architecture
+
+<img width="601" height="373" alt="TTS Architecture Diagram" src="https://github.com/user-attachments/assets/1703aa51-2d8d-45bc-859b-306618071b83" />
+
+
 ## Quick Start
 
 ### 1. Deploy Infrastructure
